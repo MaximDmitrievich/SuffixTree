@@ -20,7 +20,7 @@ TSuffixTree::~TSuffixTree()
 
 void TSuffixTree::EnterPattern(int value)
 {
-    symbolpos.push_back(value);
+    symbolpos.emplace_back(value);
     this->n++;
     this->pos++;
     TNode *curr = this->root;
@@ -53,14 +53,14 @@ void TSuffixTree::EnterPattern(int value)
             last = splitnode;
         }
         if (curr == this->root) {
-            --this->pos;
+            this->pos--;
         } else {
             curr = curr->GetSuffixLink();
         }
     }
 }
 
-TNode *TSuffixTree::SetFirst(int value, std::string &pattern)
+TNode *TSuffixTree::SetFirst(int& value, std::string &pattern)
 {
     int another = pattern.find(pattern[0]);
     TNode *curr = this->root;
@@ -68,11 +68,13 @@ TNode *TSuffixTree::SetFirst(int value, std::string &pattern)
         std::map<int, TNode *>::iterator it = curr->GetLink().find(pattern[0]);
         while (another < pattern.size()) {
             if (it != curr->GetLink().end()) {
-                for (int j = 0, i = it->second->GetFirstPos(); j < it->second->GetEdgeLength() && i < this->n && another < pattern.size(); i++, another++, j++) {
+                for (int j = 0, i = it->second->GetFirstPos(); 
+                j < it->second->GetEdgeLength() && i < this->n && another < pattern.size(); 
+                i++, another++, j++) {
                     if (pattern[another] != this->symbolpos[i]) {
                         return curr;
                     }
-                    value++;
+                    ++value;
                 }
                 curr = it->second;
                 it = it->second->GetLink().find(pattern[another]);

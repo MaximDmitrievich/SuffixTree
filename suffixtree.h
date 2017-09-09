@@ -8,7 +8,7 @@ private:
     int n;
     int pos;
     std::vector<int> symbolpos;
-    TNode *SetFirst(int value, std::string &pattern);
+    TNode *SetFirst(int& value, std::string &pattern);
 public:
     TSuffixTree();
     virtual ~TSuffixTree();
