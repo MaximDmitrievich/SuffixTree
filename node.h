@@ -19,20 +19,51 @@ public:
     TNode(const int& firstposvalue, const int& edgelengthvalue, TNode *parentvalue);
     virtual ~TNode();
 
-    void SetFirstPos(const int& value);
-    const int& GetFirstPos();
+    inline void SetFirstPos(const int& value) 
+    { 
+        this->firstpos = value; 
+    }
+    inline const int& GetFirstPos() {
+        const int& result = this->firstpos;
+        return result;
+    }
 
-    void SetEdgeLength(const int& value);
-    const int& GetEdgeLength();
+    inline void SetEdgeLength(const int& value)
+    {
+        this->edgelength = value;
+    }
+    inline const int& GetEdgeLength()
+    {
+        const int& result = this->edgelength;
+        return result;
+    }
 
-    void SetParent(TNode *value);
-    TNode *GetParent();
+    inline void SetParent(TNode *value)
+    {
+        this->parent = value;
+    }
+    inline TNode *GetParent()
+    {
+        return this->parent;
+    }
 
-    void SetLink(const int& value, TNode* nodevalue);
-    std::map<int, TNode *> &GetLink();
+    inline void SetLink(const int& value, TNode* nodevalue)
+    {
+        this->link.insert(std::pair<int, TNode *>(value, nodevalue));
+    }
+    inline std::map<int, TNode *> &GetLink()
+    {
+        return this->link;
+    }
 
-    void SetSuffixLink(TNode *value);
-    TNode *GetSuffixLink();
+    inline void SetSuffixLink(TNode *value)
+    {
+        this->suffixlink = value;
+    }
+    inline TNode *GetSuffixLink()
+    {
+        return this->suffixlink;
+    }
 };
 
 #endif
