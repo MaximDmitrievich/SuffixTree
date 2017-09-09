@@ -1,6 +1,6 @@
 #include "node.h"
 
-TNode::TNode(int firstposvalue, int edgelengthvalue, TNode *parentvalue)
+TNode::TNode(const int& firstposvalue, const int& edgelengthvalue, TNode *parentvalue)
 {
     this->firstpos = firstposvalue;
     this->edgelength = edgelengthvalue;
@@ -17,25 +17,25 @@ TNode::~TNode()
     this->link.clear();
 }
 
-void TNode::SetFirstPos(int value)
+void TNode::SetFirstPos(const int& value)
 {
     this->firstpos = value;
 }
 
-int TNode::GetFirstPos()
+const int& TNode::GetFirstPos()
 {
-    int result = this->firstpos;
+    const int& result = this->firstpos;
     return result;
 }
 
-void TNode::SetEdgeLength(int value)
+void TNode::SetEdgeLength(const int& value)
 {
     this->edgelength = value;
 }
 
-int TNode::GetEdgeLength()
+const int& TNode::GetEdgeLength()
 {
-    int result = this->edgelength;
+    const int& result = this->edgelength;
     return result;
 }
 
@@ -50,11 +50,9 @@ TNode *TNode::GetParent()
     return result;
 }
 
-TNode *TNode::SetLink(int value, TNode *nodevalue)
+void TNode::SetLink(const int& value, TNode *nodevalue)
 {
     this->link.insert(std::pair<int, TNode *>(value, nodevalue));
-    TNode *result = this->link.find(value)->second;
-    return result;
 }
 
 std::map<int, TNode *> &TNode::GetLink()

@@ -18,7 +18,7 @@ TSuffixTree::~TSuffixTree()
     this->symbolpos.clear();
 }
 
-void TSuffixTree::EnterPattern(int value)
+void TSuffixTree::EnterPattern(const int& value)
 {
     symbolpos.emplace_back(value);
     this->n++;
@@ -60,7 +60,7 @@ void TSuffixTree::EnterPattern(int value)
     }
 }
 
-TNode *TSuffixTree::SetFirst(int& value, std::string &pattern)
+TNode *TSuffixTree::SetFirst(int& value, const std::string &pattern)
 {
     int another = pattern.find(pattern[0]);
     TNode *curr = this->root;
@@ -86,7 +86,7 @@ TNode *TSuffixTree::SetFirst(int& value, std::string &pattern)
     return curr;
 }
 
-void TSuffixTree::MatchStatistic(std::vector<int> &value, std::string &text)
+void TSuffixTree::MatchStatistic(std::vector<int> &value, const std::string &text)
 {
     this->root->SetSuffixLink(this->root);
     TNode *curr = this->SetFirst(value[0], text);

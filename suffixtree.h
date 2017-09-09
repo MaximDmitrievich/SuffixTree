@@ -8,13 +8,13 @@ private:
     int n;
     int pos;
     std::vector<int> symbolpos;
-    TNode *SetFirst(int& value, std::string &pattern);
+    TNode *SetFirst(int& value, const std::string &pattern);
 public:
     TSuffixTree();
     virtual ~TSuffixTree();
 
-    void EnterPattern(int value);
-    void MatchStatistic(std::vector<int> &value, std::string &text);
+    void EnterPattern(const int& value);
+    void MatchStatistic(std::vector<int> &value, const std::string &text);
 };
 
 #endif

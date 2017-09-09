@@ -16,19 +16,19 @@ private:
     std::map<int, TNode *> link;
     TNode *suffixlink;
 public:
-    TNode(int firstposvalue, int edgelengthvalue, TNode *parentvalue);
+    TNode(const int& firstposvalue, const int& edgelengthvalue, TNode *parentvalue);
     virtual ~TNode();
 
-    void SetFirstPos(int value);
-    int GetFirstPos();
+    void SetFirstPos(const int& value);
+    const int& GetFirstPos();
 
-    void SetEdgeLength(int value);
-    int GetEdgeLength();
+    void SetEdgeLength(const int& value);
+    const int& GetEdgeLength();
 
     void SetParent(TNode *value);
     TNode *GetParent();
 
-    TNode *SetLink(int value, TNode* nodevalue);
+    void SetLink(const int& value, TNode* nodevalue);
     std::map<int, TNode *> &GetLink();
 
     void SetSuffixLink(TNode *value);
